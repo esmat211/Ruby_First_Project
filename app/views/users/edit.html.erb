@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Edit Page</title>
+    </head>
+    <body>
+
+    <style>
+        lable{
+            text-align: left;
+            clear:left;
+            display:block;
+            float:left;
+            margin:0 0 1em 0;
+            padding:0;
+            text-align:left;
+            width:8em;
+            margin-left: 10px;
+        }
+        input{
+
+            margin:0 0.5em 0.5em 0;
+            background-color: lightblue
+        }
+    </style>
+        <h1>Editing <%= @user.first_name %> </h1>
+
+        <form action="/users/<%= @user.id %>" method="post">
+            <input type="hidden" name="_method" value="patch">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <lable for="first_name">First Name</lable>
+            <input type="text" name="user[first_name]" id="first_name" value="<%= @user.first_name %>"><br>
+
+            <lable for="last_name">Last Name</lable>
+            <input type="text" name="user[last_name]" id="last_name" value="<%= @user.last_name %>"><br>
+
+            <lable for="email">Email Address</lable>
+            <input type="text" name="user[email]" id="email" value="<%= @user.email %>"><br>
+
+            <lable for="password">Password</lable>
+            <input type="text" name="user[password]" id="password" value="<%= @user.password %>"><br>
+
+            <input type="submit" name="" value="update">
+
+        </form>
+            <a href="/users/index"></a>
+            <a href="/users/new"></a>
+    </body>
+</html>
